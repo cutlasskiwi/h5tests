@@ -11,7 +11,7 @@ describe('Student assignment', () => {
 
 	beforeAll(async () => {
 		app = express()
-		app.use(express.static('assignment'))
+		app.use(express.static('.'))
 
 		server = await Promise.resolve(app.listen(PORT))
 		browser = await puppeteer.launch()
