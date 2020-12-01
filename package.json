@@ -1,0 +1,19 @@
+{
+  "name": "h5tests",
+  "version": "0.0.1",
+  "description": "Repo with all the tests for assignments in github classroom",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/h5-classroom/h5tests.git"
+  },
+  "author": "Janne Kemi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h5-classroom/h5tests/issues"
+  },
+  "homepage": "https://github.com/h5-classroom/h5tests#readme"
+}
