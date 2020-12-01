@@ -1,5 +1,5 @@
-import puppeteer from 'puppeteer'
-import express from 'express'
+const puppeteer = require ('puppeteer')
+const express = require('express')
 
 const PORT = process.env.PORT || 8080
 
