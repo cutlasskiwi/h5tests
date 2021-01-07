@@ -1,6 +1,5 @@
 const puppeteer = require ('puppeteer')
 const express = require('express')
-import { JSDOM } from 'jsdom'
 
 const PORT = process.env.PORT || 8080
 
@@ -27,7 +26,8 @@ describe('Student assignment', () => {
 		const page = await browser.newPage()
 		const res = await page.goto(`http://localhost:${PORT}/index.html`)
 
-		const html = fs.readFileSync(path.resolve('', './index.html'), 'utf8')
+		//const html = fs.readFileSync(path.resolve('', './index.html'), 'utf8')
+		const html = fs.readFileSync(await page.goto(`http://localhost:${PORT}/index.html`), 'utf8')
 			
 		expect(res.status()).toBeLessThan(400)
 	
