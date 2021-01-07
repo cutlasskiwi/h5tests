@@ -1,7 +1,7 @@
 const puppeteer = require ('puppeteer')
 const express = require('express')
 
-const fs = require('fs');
+// const fs = require('fs');
 
 const PORT = process.env.PORT || 8080
 
@@ -24,22 +24,22 @@ describe('Student assignment', () => {
 		server.close()
 	})
 
-	it ('HTML dokumentet validerar som korrekt HTML', async () => {
-		const page = await browser.newPage()
-		const res = await page.goto(`http://localhost:${PORT}/index.html`)
+	// it ('HTML dokumentet validerar som korrekt HTML', async () => {
+	// 	const page = await browser.newPage()
+	// 	const res = await page.goto(`http://localhost:${PORT}/index.html`)
 
-		//const html = fs.readFileSync(path.resolve('', './index.html'), 'utf8')
-		const html = fs.readFileSync(await page.goto(`http://localhost:${PORT}/index.html`), 'utf8')
+	// 	//const html = fs.readFileSync(path.resolve('', './index.html'), 'utf8')
+	// 	const html = fs.readFileSync(await page.goto(`http://localhost:${PORT}/index.html`), 'utf8')
 			
-		expect(res.status()).toBeLessThan(400)
+	// 	expect(res.status()).toBeLessThan(400)
 	
-		expect( html ).toHTMLValidate( {
-			extends: ["html-validate:standard"],
-			root: true
-		} );
+	// 	expect( html ).toHTMLValidate( {
+	// 		extends: ["html-validate:standard"],
+	// 		root: true
+	// 	} );
 	
-		await page.close()
-	})
+	// 	await page.close()
+	// })
 
 	it ('Innehåller minst en rubrik (h1) samt en paragraf (p)', async () => {
 		const page = await browser.newPage()
