@@ -1,5 +1,6 @@
 const puppeteer = require ('puppeteer')
 const express = require('express')
+import { JSDOM } from 'jsdom'
 
 const PORT = process.env.PORT || 8080
 
@@ -22,21 +23,23 @@ describe('Student assignment', () => {
 		server.close()
 	})
 
-		it ('HTML dokumentet validerar som korrekt HTML.', async () => {
-			const page = await browser.newPage()
-			const res = await page.goto(`http://localhost:${PORT}/index.html`)
-			
-			expect(res.status()).toBeLessThan(400)
-	
-			expect( html ).toHTMLValidate( {
-				extends: ["html-validate:standard"],
-				root: true
-			} );
-	
-			await page.close()
-		})
+	it ('HTML dokumentet validerar som korrekt HTML', async () => {
+		const page = await browser.newPage()
+		const res = await page.goto(`http://localhost:${PORT}/index.html`)
 
-	it ('Innehåller minst en rubrik (h1) samt en paragraf (p).', async () => {
+		const html = fs.readFileSync(path.resolve('', './index.html'), 'utf8')
+			
+		expect(res.status()).toBeLessThan(400)
+	
+		expect( html ).toHTMLValidate( {
+			extends: ["html-validate:standard"],
+			root: true
+		} );
+	
+		await page.close()
+	})
+
+	it ('Innehåller minst en rubrik (h1) samt en paragraf (p)', async () => {
 		const page = await browser.newPage()
 		const res = await page.goto(`http://localhost:${PORT}/index.html`)
 		
@@ -51,7 +54,7 @@ describe('Student assignment', () => {
 		await page.close()
 	})
 
-	it ('Har en lista (ul) med minst 3 saker (li)', async () => {
+	it ('Har en lista <ul> med minst 3 saker <li>', async () => {
 		const page = await browser.newPage()
 		const res = await page.goto(`http://localhost:${PORT}/index.html`)
 		
@@ -66,7 +69,7 @@ describe('Student assignment', () => {
 		await page.close()
 	})
 
-	it ('Skall via javascriptfilen konsoll-logga "Hello World" till konsollen.', async () => {
+	it ('Skall via javascriptfilen konsoll-logga "Hello World" till konsollen', async () => {
 		const logs = []
 		const page = await browser.newPage()
 		page.on('console', msg => logs.push(msg.text()))
